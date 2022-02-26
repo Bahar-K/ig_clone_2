@@ -5,16 +5,13 @@ class Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> images = [
-      "https://randomuser.me/api/portraits/men/13.jpg",
-      ""
-    ];
+    List<String> images = ["https://randomuser.me/api/portraits/men/0.jpg", ""];
     final List<Icon> _tabs = <Icon>[
-      Icon(
+      const Icon(
         Icons.ac_unit,
         color: Colors.black,
       ),
-      Icon(
+      const Icon(
         Icons.ac_unit_outlined,
         color: Colors.black,
       )
@@ -40,7 +37,7 @@ class Profile extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 8),
+                                  padding: const EdgeInsets.only(right: 10),
                                   child: Container(
                                     child: Image.asset(
                                       "assets/images/avatar1.png",
@@ -95,7 +92,7 @@ class Profile extends StatelessWidget {
                               height: 20,
                             ),
                             Text(
-                              "Bahra Time",
+                              "Jacob West",
                             ),
                             SizedBox(
                               height: 5,
@@ -149,12 +146,21 @@ class Profile extends StatelessWidget {
                   handle:
                       NestedScrollView.sliverOverlapAbsorberHandleFor(context),
                   sliver: SliverAppBar(
-                    backgroundColor: Colors.purple,
-                    toolbarHeight: 0,
+                    backgroundColor: Colors.white,
+                    toolbarHeight: 50,
                     pinned: true,
                     forceElevated: innerBoxIsScrolled,
-                    bottom: TabBar(
-                      tabs: _tabs.map((Icon name) => Tab(icon: name)).toList(),
+                    flexibleSpace: Container(
+                      decoration: BoxDecoration(
+                          border: Border(
+                              top: BorderSide(
+                        color: Colors.black.withOpacity(0.5),
+                        width: 0.5,
+                      ))),
+                      child: TabBar(
+                        tabs:
+                            _tabs.map((Icon name) => Tab(icon: name)).toList(),
+                      ),
                     ),
                   ),
                 ),
@@ -175,20 +181,9 @@ class Profile extends StatelessWidget {
                                 NestedScrollView.sliverOverlapAbsorberHandleFor(
                                     context),
                           ),
-                          SliverPadding(
-                            padding: const EdgeInsets.all(8.0),
-                            sliver: SliverFixedExtentList(
-                              itemExtent: 48.0,
-                              delegate: SliverChildBuilderDelegate(
-                                (BuildContext context, int index) {
-                                  return ListTile(
-                                    title: Text('Item $index'),
-                                  );
-                                },
-                                childCount: 30,
-                              ),
-                            ),
-                          ),
+                          SliverToBoxAdapter(
+                            child: customGridView(),
+                          )
                         ],
                       );
                     },
@@ -218,9 +213,7 @@ class Profile extends StatelessWidget {
                 Container(
                   height: 62,
                   width: 62,
-                  child: Center(
-                    child: Icon(Icons.add),
-                  ),
+                  child: Center(child: Icon(Icons.add)),
                   decoration: BoxDecoration(
                       border:
                           Border.all(width: 1, color: const Color(0xFFC7C7CC)),
@@ -230,54 +223,79 @@ class Profile extends StatelessWidget {
                 SizedBox(
                   height: 5,
                 ),
-                Text("Avatar"),
+                Text("avatar"),
               ],
             ),
           ),
           ListView.builder(
-              shrinkWrap: true,
-              physics: ScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemCount: 30,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  height: 81,
-                  width: 62,
-                  child: Column(
-                    children: [
-                      Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Container(
-                            height: 62,
-                            width: 62,
-                            decoration: BoxDecoration(
-                              color: Colors.red,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: Colors.white, width: 3),
-                                color: Colors.blue,
-                                shape: BoxShape.circle),
-                            height: 58,
-                            width: 58,
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("Avatar")
-                    ],
-                  ),
-                );
-              })
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
+            scrollDirection: Axis.horizontal,
+            itemCount: 30,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                height: 81,
+                width: 62,
+                child: Column(
+                  children: [
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          height: 62,
+                          width: 62,
+                          decoration: BoxDecoration(
+                              color: Colors.red, shape: BoxShape.circle),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: NetworkImage(
+                                "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deezer.com%2Ftr%2Fartist%2F1424821&psig=AOvVaw0GjDVhCJN5zEiLn5O6BZlz&ust=1645893018558000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCAoK2jm_YCFQAAAAAdAAAAABAN",
+                              )),
+                              border: Border.all(color: Colors.white, width: 3),
+                              color: Colors.blue,
+                              shape: BoxShape.circle),
+                          height: 58,
+                          width: 58,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Text("avatar"),
+                  ],
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
+  }
+
+  Widget customGridView() {
+    return Container(
+        width: double.infinity,
+        child: GridView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: 10,
+            itemBuilder: (context, index) => Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deezer.com%2Ftr%2Fartist%2F1424821&psig=AOvVaw0GjDVhCJN5zEiLn5O6BZlz&ust=1645893018558000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCAoK2jm_YCFQAAAAAdAAAAABAN")),
+                    border: Border.all(color: Colors.white, width: 3),
+                    color: Colors.blue,
+                  ),
+                  height: 58,
+                  width: 58,
+                ),
+            padding: EdgeInsets.only(top: 0),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: 1, crossAxisCount: 3)));
   }
 }
