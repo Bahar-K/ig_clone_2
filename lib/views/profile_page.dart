@@ -59,7 +59,7 @@ class Profile extends StatelessWidget {
                                           horizontal: 10),
                                       child: Column(
                                         children: [
-                                          Text("23"),
+                                          Text("54"),
                                           Text("Post"),
                                         ],
                                       ),
@@ -69,7 +69,7 @@ class Profile extends StatelessWidget {
                                           horizontal: 10),
                                       child: Column(
                                         children: [
-                                          Text("10"),
+                                          Text("54"),
                                           Text("Follower"),
                                         ],
                                       ),
@@ -79,7 +79,7 @@ class Profile extends StatelessWidget {
                                           horizontal: 10),
                                       child: Column(
                                         children: [
-                                          Text("2003"),
+                                          Text("162"),
                                           Text("Following"),
                                         ],
                                       ),
@@ -252,8 +252,7 @@ class Profile extends StatelessWidget {
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: NetworkImage(
-                                "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deezer.com%2Ftr%2Fartist%2F1424821&psig=AOvVaw0GjDVhCJN5zEiLn5O6BZlz&ust=1645893018558000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCAoK2jm_YCFQAAAAAdAAAAABAN",
-                              )),
+                                      "https://randomuser.me/api/portraits/men/$index.jpg")),
                               border: Border.all(color: Colors.white, width: 3),
                               color: Colors.blue,
                               shape: BoxShape.circle),
@@ -287,7 +286,7 @@ class Profile extends StatelessWidget {
                   decoration: BoxDecoration(
                     image: DecorationImage(
                         image: NetworkImage(
-                            "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.deezer.com%2Ftr%2Fartist%2F1424821&psig=AOvVaw0GjDVhCJN5zEiLn5O6BZlz&ust=1645893018558000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNCAoK2jm_YCFQAAAAAdAAAAABAN")),
+                            "https://randomuser.me/api/portraits/men/$index.jpg")),
                     border: Border.all(color: Colors.white, width: 3),
                     color: Colors.blue,
                   ),
