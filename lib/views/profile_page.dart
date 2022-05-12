@@ -6,14 +6,14 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> images = ["https://randomuser.me/api/portraits/men/0.jpg", ""];
-    final List<Icon> _tabs = <Icon>[
+    final List<Icon> _tabs = <Icon>[ 
       const Icon(
         Icons.ac_unit,
         color: Colors.black,
       ),
       const Icon(
         Icons.ac_unit_outlined,
-        color: Colors.black,
+        color: Colors.black,                                                            
       )
     ];
     return SafeArea(
@@ -59,7 +59,7 @@ class Profile extends StatelessWidget {
                                           horizontal: 10),
                                       child: Column(
                                         children: [
-                                          Text("54"),
+                                          Text("23"),
                                           Text("Post"),
                                         ],
                                       ),
@@ -69,7 +69,7 @@ class Profile extends StatelessWidget {
                                           horizontal: 10),
                                       child: Column(
                                         children: [
-                                          Text("54"),
+                                          Text("10"),
                                           Text("Follower"),
                                         ],
                                       ),
@@ -79,7 +79,7 @@ class Profile extends StatelessWidget {
                                           horizontal: 10),
                                       child: Column(
                                         children: [
-                                          Text("162"),
+                                          Text("2003"),
                                           Text("Following"),
                                         ],
                                       ),
